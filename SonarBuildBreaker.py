@@ -1,4 +1,4 @@
-import urllib, json, re, subprocess,sys
+import urllib, json, re, subprocess, sys, os
 import ConfigParser
 
 class Sonar:
@@ -75,7 +75,7 @@ class Sonar:
 
 SONAR_RESULTS = "sonarResults.out"
 
-if (len(sys.argv) != 6):
+if (len(sys.argv) < 7):
 	print "Usage : python SonarBuildBreaker.py <sonar_server_url> <groupId> <artifactId> <branch> <mode>"
 	print "Mode (1 or 2)"
 	print "\t 1. Pre-Quality Analysis"
@@ -109,6 +109,12 @@ elif (sys.argv[5] == '2'):
 	print "Running COMPARISON"
 	msg = ''
 	fail = False
+	
+	print os.getenv('skipBlocker', False)
+	print os.getenv('skipCritical', False)
+	print os.getenv('skipMajor', False)
+	print os.getenv('skipMinor', False)
+	print os.getenv('skipInfo', False)
 
 	if (pre.total_issues < post.total_issues):
 		msg = "New issues "+ str(post.total_issues - pre.total_issues)+"\n"

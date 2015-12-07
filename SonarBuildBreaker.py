@@ -110,31 +110,39 @@ elif (sys.argv[5] == '2'):
 	msg = ''
 	fail = False
 	
-	print os.getenv('skipBlocker', False)
-	print os.getenv('skipCritical', False)
-	print os.getenv('skipMajor', False)
-	print os.getenv('skipMinor', False)
-	print os.getenv('skipInfo', False)
+	skipBlocker = os.getenv('skipBlocker', False)
+	skipCritical = os.getenv('skipCritical', False)
+	skipMajor = os.getenv('skipMajor', False)
+	skipMinor = os.getenv('skipMinor', True)
+	skipInfo = os.getenv('skipInfo', True)
 
 	if (pre.total_issues < post.total_issues):
 		msg = "New issues "+ str(post.total_issues - pre.total_issues)+"\n"
 
 	if (pre.total_blockers < post.total_blockers):
 		msg = msg + "New BLOCKER issues "+ str(post.total_blockers - pre.total_blockers)+"\n"
-		fail = True
+		if(not skipBlocker):
+			fail = True
 
 	if (pre.total_critical < post.total_critical):
 		msg = msg + "New CRITICAL issues "+ str(post.total_critical - pre.total_critical)+"\n"
-		fail = True
+		if(not skipCritical):
+			fail = True
 
 	if (pre.total_major < post.total_major):
 		msg = msg + "New MAJOR issues "+ str(post.total_major - pre.total_major)+"\n"
+		if(not skipMajor):
+			fail = True
 
 	if (pre.total_minor < post.total_minor):
 		msg = msg + "New MINOR issues "+ str(post.total_minor - pre.total_minor)+"\n"
+		if(not skipMinor):
+			fail = True
 
 	if (pre.total_info < post.total_info):
 		msg = msg + "New INFO issues "+ str(post.total_info - pre.total_info)+"\n"
+		if(not skipInfo):
+			fail = True
 
 	if (fail):
 		print "Analysis result : FAILED"

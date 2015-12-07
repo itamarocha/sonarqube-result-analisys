@@ -75,7 +75,7 @@ class Sonar:
 
 SONAR_RESULTS = "sonarResults.out"
 
-if (len(sys.argv) < 7):
+if (len(sys.argv) < 6):
 	print "Usage : python SonarBuildBreaker.py <sonar_server_url> <groupId> <artifactId> <branch> <mode>"
 	print "Mode (1 or 2)"
 	print "\t 1. Pre-Quality Analysis"

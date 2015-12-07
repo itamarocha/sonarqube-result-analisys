@@ -62,7 +62,7 @@ class Sonar:
 			f.close()
 
 	def readResults(self):
-		print "Reading results from file"
+		print "Reading previous results from file"
 		config = ConfigParser.RawConfigParser()
 		config.read(SONAR_RESULTS)
 		self.total_issues = int(config.get('Default', 'total'))

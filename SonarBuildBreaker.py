@@ -82,6 +82,13 @@ if (len(sys.argv) != 6):
 	print "\t 2. Post-Quality Analysis"
 	exit(1)
 
+print "Sonar URL   : ", sys.argv[1]
+print "Group Id    : ", sys.argv[2]
+print "Artifact id : ", sys.argv[3]
+print "Branch      : ", sys.argv[4]
+print "Mode        : ", sys.argv[5]
+print "\n"
+
 if (sys.argv[5] == '1'):
 	print ("Runnig in PRE Analysis mode")
 	pre = Sonar (sys.argv[1])

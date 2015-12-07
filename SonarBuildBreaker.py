@@ -65,12 +65,12 @@ class Sonar:
 		print "Reading results from file"
 		config = ConfigParser.RawConfigParser()
 		config.read(SONAR_RESULTS)
-		self.total_issues = config.get('Default', 'total')
-		self.total_blockers = config.get('Default', 'blocker')
-		self.total_critical = config.get('Default', 'critical')
-		self.total_major = config.get('Default', 'major')
-		self.total_minor = config.get('Default', 'minor')
-		self.total_info = config.get('Default', 'info')
+		self.total_issues = int(config.get('Default', 'total'))
+		self.total_blockers = int(config.get('Default', 'blocker'))
+		self.total_critical = int(config.get('Default', 'critical'))
+		self.total_major = int(config.get('Default', 'major'))
+		self.total_minor = int(config.get('Default', 'minor'))
+		self.total_info = int(config.get('Default', 'info'))
 
 
 SONAR_RESULTS = "sonarResults.out"
@@ -111,24 +111,24 @@ elif (sys.argv[5] == '2'):
 	fail = False
 
 	if (pre.total_issues < post.total_issues):
-		msg.append ("New issues "+ str(post.total_issues - pre.total_issues)+"\n")
+		msg = "New issues "+ str(post.total_issues - pre.total_issues)+"\n"
 
 	if (pre.total_blockers < post.total_blockers):
-		msg.append ("New BLOCKER issues "+ str(post.total_blockers - pre.total_blockers)+"\n")
+		msg = msg + "New BLOCKER issues "+ str(post.total_blockers - pre.total_blockers)+"\n"
 		fail = True
 
 	if (pre.total_critical < post.total_critical):
-		msg.append ("New CRITICAL issues "+ str(post.total_critical - pre.total_critical)+"\n")
+		msg = msg + "New CRITICAL issues "+ str(post.total_critical - pre.total_critical)+"\n"
 		fail = True
 
 	if (pre.total_major < post.total_major):
-		msg.append ("New MAJOR issues "+ str(post.total_major - pre.total_major)+"\n")
+		msg = msg + "New MAJOR issues "+ str(post.total_major - pre.total_major)+"\n"
 
 	if (pre.total_minor < post.total_minor):
-		msg.append ("New MINOR issues "+ str(post.total_minor - pre.total_minor)+"\n")
+		msg = msg + "New MINOR issues "+ str(post.total_minor - pre.total_minor)+"\n"
 
 	if (pre.total_info < post.total_info):
-		msg.append ("New INFO issues "+ str(post.total_info - pre.total_info)+"\n")
+		msg = msg + "New INFO issues "+ str(post.total_info - pre.total_info)+"\n"
 
 	if (fail):
 		print "Analysis result : FAILED"

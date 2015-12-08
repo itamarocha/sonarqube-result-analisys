@@ -17,3 +17,6 @@ But you can control the behaviour by setting these environment variables **skipB
 
 # Reference Bamboo Plan #
 https://ecosystem-bamboo.internal.atlassian.com/browse/NRAM-SQPLUG
+
+# Limitations
+* This will fail the build if we run first time (on master or any branch build)because the pre-analyser return ZERO for all issue types.

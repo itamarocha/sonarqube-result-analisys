@@ -147,7 +147,9 @@ elif (sys.argv[5] == '2'):
 	if (fail):
 		print "Analysis result : FAILED"
 		print msg
+		print "Refer report : http://sonar.dev.intsys.atlassian.com:9000/?did=11"
 		exit (1)
 	else:
 		print "Analysis result : PASSED"
 		print msg
+		print "Refer report : http://sonar.dev.intsys.atlassian.com:9000/?did=11"

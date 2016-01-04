@@ -112,7 +112,7 @@ elif (sys.argv[5] == '2'):
 	
 	skipBlocker = os.getenv('skipBlocker', False)
 	skipCritical = os.getenv('skipCritical', False)
-	skipMajor = os.getenv('skipMajor', False)
+	skipMajor = os.getenv('skipMajor', True)
 	skipMinor = os.getenv('skipMinor', True)
 	skipInfo = os.getenv('skipInfo', True)
 

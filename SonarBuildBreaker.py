@@ -17,7 +17,7 @@ class Sonar:
 		url = self.sonar_server+"/api/issues/search?componentRoots="+groupId+":"+artifactId+":"+branch
 		data = json.loads(urllib.urlopen(url).read())
 		self.total_issues = data['total']
-		return data['paging']['pages']
+		return data['paging']['total']
 
 	def findIssues(self, groupId, artifactId, branch):
 		print "Finding issues from SonarQube"

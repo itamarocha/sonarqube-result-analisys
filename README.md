@@ -8,3 +8,7 @@ python SonarBuildBreaker.py <sonar_server_url> <projectKey>
 # Evolution #
 
 Nos ajude a evoluir a partir deste script, faça um fork e commit novas funcionalidades, vamos usar o poder do python para agilizar e facilitar a vida dos devs
+
+# Dúvidas #
+
+https://itamarocha.com
